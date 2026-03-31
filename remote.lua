@@ -1,10 +1,44 @@
 local kb = libs.keyboard;
 local fs = libs.fs;
+local timer = libs.timer;
+local win = libs.win;
+local utf8 = libs.utf8
+local tid = -1;
+local title = "";
 
-events.detect = function ()
-	return
+events.detect = function()
+  return
     fs.exists("/usr/bin/mpv") or
-    fs.exists("/bin/mpv");
+    fs.exists("/bin/mpv") or
+    fs.exists("C:/ProgramData/chocolatey/lib/mpvio.install/tools/mpv") or
+    fs.exists("%appdata%/mpv");
+end
+
+events.focus = function()
+  title = "";
+  tid = timer.interval(actions.update, 500);
+end
+
+events.blur = function()
+  timer.cancel(tid);
+end
+
+--@update current media status
+actions.update = function()
+  local hwnd = win.window("mpv.exe");
+  local temp = win.title(hwnd);
+
+  if (temp == "") then
+    temp = "[Not Playing]";
+  else
+    local pos = utf8.lastindexof(temp, " - ");
+    temp = utf8.sub(temp, 0, pos);
+  end
+
+  if (temp ~= title) then
+    title = temp;
+    layout.info.text = title;
+  end
 end
 
 --@help Lower volume
@@ -32,12 +66,12 @@ actions.next = function()
   kb.stroke(">");
 end
 
---@help Skip forward 10 secs
+--@help Skip forward
 actions.forward = function()
   kb.stroke("right");
 end
 
---@help Skip backward 10 secs
+--@help Skip backward
 actions.backward = function()
   kb.stroke("left");
 end
