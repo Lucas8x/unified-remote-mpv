@@ -36,6 +36,23 @@ installation; see the [app documentation](https://www.unifiedremote.com/tutorial
 | Decrease / increase playback speed | `[` / `]` |
 | Toggle fullscreen | `f` |
 
+## Customizing key bindings
+
+If your `input.conf` uses different keys, you can edit the key passed to the matching
+action in `remote.lua`. 
+
+For example, if your `input.conf` contains
+`SPACE cycle pause`, change `kb.stroke("p")` in `actions.play_pause` to
+`kb.stroke("space")`. 
+
+Use the key on the left side of the `input.conf` line;
+the command on the right side does not go in `remote.lua`.
+
+Use `kb.stroke("key")` for named keys and keys with modifiers, and
+`kb.text("character")` for literal characters such as `<`, `>`, `[` and `]`.
+
+Apply the same change to the matching action for any other remapped control.
+
 ## Troubleshooting
 
 - If a command does not work, check whether mpv's `input.conf` remaps the
