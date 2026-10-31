@@ -20,10 +20,10 @@
     <button icon="fullscreen" onTap="fullscreen" />
     <button icon="ff" onTap="playback_speed_up" />
   </row>
-  <!-- <row>
+  <row>
     <button icon="previous" onTap="previous" />
     <button icon="next" onTap="next" />
-  </row> -->
+  </row>
   <row>
     <button text="-3s" onTap="backward" />
     <button text="+3s" onTap="forward" />

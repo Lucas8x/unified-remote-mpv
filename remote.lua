@@ -65,16 +65,16 @@ actions.volume_up = function()
   kb.stroke("0");
 end
 
---@help Previous track
+--@help Previous playlist item
 actions.previous = function()
   actions.switch();
-  kb.stroke("<");
+  kb.text("<");
 end
 
---@help Next track
+--@help Next playlist item
 actions.next = function()
   actions.switch();
-  kb.stroke(">");
+  kb.text(">");
 end
 
 --@help Skip forward
@@ -108,8 +108,8 @@ actions.switch_subs = function()
 end
 
 --@help Toggle subtitle visibility
-actions.switch();
 actions.toggle_subs = function()
+  actions.switch();
   kb.stroke("v");
 end
 
