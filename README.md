@@ -3,6 +3,8 @@
 Control mpv with the [Unified Remote](https://www.unifiedremote.com) app. This remote sends keyboard shortcuts
 to the mpv window; it does not launch the player or open media files.
 
+<kbd><img width="200" height="406" src=".repo/screenshot.jpg" alt="Controller View" /></kbd>
+
 ## Requirements
 
 - Unified Remote Server installed and running on your computer.
